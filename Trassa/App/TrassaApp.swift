@@ -23,7 +23,7 @@ struct TrassaApp: App {
     }
 }
 
-/// Первый запуск — онбординг, затем список объектов
+/// Первый запуск - онбординг, затем список объектов
 struct RootView: View {
     @AppStorage("onboardingCompleted") private var onboardingCompleted = false
     @State private var router = Router()

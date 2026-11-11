@@ -107,7 +107,7 @@ struct PDFPreviewCard: View {
             .frame(height: 132)
             .padding(.top, 18)
 
-            Text("±15 см от трассы — не сверлить")
+            Text("±15 см от трассы - не сверлить")
                 .font(Theme.Fonts.inter(10, .semibold))
                 .foregroundStyle(Theme.Colors.paperDanger)
                 .padding(.top, 14)

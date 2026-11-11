@@ -30,7 +30,7 @@ final class RecordViewModel: ObservableObject {
         project = request.project
         existingRoom = request.room
 
-        // Дописываем трассы в существующую комнату — нужно сначала релокализоваться
+        // Дописываем трассы в существующую комнату - нужно сначала релокализоваться
         // по её карте, иначе новые точки окажутся в другой системе координат.
         var map: ARWorldMap?
         var loadError: String?
@@ -103,14 +103,14 @@ final class RecordViewModel: ObservableObject {
         if current.points.count >= 2 {
             drafts.append(current)
         } else {
-            // Одиночная точка — не линия, удаляем её якорь из карты
+            // Одиночная точка - не линия, удаляем её якорь из карты
             current.points.forEach { controller.removeAnchor(id: $0.anchorID) }
         }
         current = DraftRoute(type: selectedType)
         render()
     }
 
-    /// Отменяет последнюю точку. Если текущая линия пуста — «открывает» предыдущую.
+    /// Отменяет последнюю точку. Если текущая линия пуста - «открывает» предыдущую.
     func undo() {
         if current.points.isEmpty, let last = drafts.popLast() {
             current = last
@@ -130,7 +130,7 @@ final class RecordViewModel: ObservableObject {
             return
         }
         guard isMapped else {
-            // ARKit ещё не набрал достаточно опорных точек — карта может не узнаться потом
+            // ARKit ещё не набрал достаточно опорных точек - карта может не узнаться потом
             alertMessage = "Карта комнаты ещё не готова. \(mappingStatus.saveExplanation)"
             Haptics.warning()
             return
@@ -175,7 +175,7 @@ final class RecordViewModel: ObservableObject {
 }
 
 extension Room {
-    /// Трассы комнаты для отрисовки. Если якорь восстановлен из карты — берём его
+    /// Трассы комнаты для отрисовки. Если якорь восстановлен из карты - берём его
     /// уточнённое положение, иначе сохранённые координаты.
     func renderRoutes(anchorPositions: [UUID: SIMD3<Float>]) -> [RenderRoute] {
         sortedRoutes.map { route in

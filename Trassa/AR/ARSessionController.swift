@@ -45,12 +45,12 @@ final class ARSessionController: NSObject, ObservableObject {
     private var showSavedZones = false
     private var lastAnchorRefresh = Date.distantPast
 
-    /// - Parameter worldMap: карта комнаты для релокализации (nil — новая запись)
+    /// - Parameter worldMap: карта комнаты для релокализации (nil - новая запись)
     init(worldMap: ARWorldMap? = nil) {
         self.initialWorldMap = worldMap
         self.arView = ARView(frame: .zero, cameraMode: .ar, automaticallyConfigureSession: false)
         super.init()
-        // Без карты система координат новая — «релокализоваться» не нужно
+        // Без карты система координат новая - «релокализоваться» не нужно
         isRelocalized = worldMap == nil
         arView.renderOptions.insert(.disableMotionBlur)
         arView.scene.addAnchor(savedRoot)
@@ -67,10 +67,10 @@ final class ARSessionController: NSObject, ObservableObject {
             return
         }
         let config = ARWorldTrackingConfiguration()
-        // Трассы проходят по стенам — ищем только вертикальные плоскости
+        // Трассы проходят по стенам - ищем только вертикальные плоскости
         config.planeDetection = [.vertical]
         // С LiDAR строим меш комнаты: raycast по estimatedPlane становится точнее,
-        // а карта — плотнее. Без LiDAR приложение работает по визуальным точкам.
+        // а карта - плотнее. Без LiDAR приложение работает по визуальным точкам.
         if hasLiDAR {
             config.sceneReconstruction = .mesh
         }
@@ -118,8 +118,8 @@ final class ARSessionController: NSObject, ObservableObject {
     private func raycastCenter(cameraPosition: SIMD3<Float>) -> SurfaceHit? {
         let center = CGPoint(x: arView.bounds.midX, y: arView.bounds.midY)
         guard center.x > 0 else { return nil }
-        // Сначала — найденная геометрия плоскости (самая стабильная),
-        // затем — оценочная плоскость (работает сразу, с LiDAR опирается на меш).
+        // Сначала - найденная геометрия плоскости (самая стабильная),
+        // затем - оценочная плоскость (работает сразу, с LiDAR опирается на меш).
         let targets: [ARRaycastQuery.Target] = [.existingPlaneGeometry, .estimatedPlane]
         for target in targets {
             if let result = arView.raycast(from: center, allowing: target, alignment: .vertical).first {
@@ -131,7 +131,7 @@ final class ARSessionController: NSObject, ObservableObject {
 
     private func makeHit(_ transform: simd_float4x4, cameraPosition: SIMD3<Float>) -> SurfaceHit {
         let position = transform.translation
-        // У результата raycast по плоскости ось Y — нормаль поверхности
+        // У результата raycast по плоскости ось Y - нормаль поверхности
         var normal = simd_normalize(SIMD3(transform.columns.1.x, transform.columns.1.y, transform.columns.1.z))
         // Нормаль должна смотреть на пользователя, иначе линии окажутся «внутри» стены
         if simd_dot(normal, cameraPosition - position) < 0 { normal = -normal }
@@ -153,7 +153,7 @@ final class ARSessionController: NSObject, ObservableObject {
     }
 
     /// Актуальные положения якорей. После релокализации ARKit уточняет их,
-    /// поэтому берём позиции из сессии, а сохранённые координаты — запасной вариант.
+    /// поэтому берём позиции из сессии, а сохранённые координаты - запасной вариант.
     func anchorPositions() -> [UUID: SIMD3<Float>] {
         guard let anchors = arView.session.currentFrame?.anchors else { return [:] }
         var result: [UUID: SIMD3<Float>] = [:]
@@ -203,7 +203,7 @@ final class ARSessionController: NSObject, ObservableObject {
 
     // MARK: - Сохранение карты
 
-    /// Получает ARWorldMap текущей сессии. Вызывать только при mappingStatus == .mapped —
+    /// Получает ARWorldMap текущей сессии. Вызывать только при mappingStatus == .mapped -
     /// иначе карта получится неполной и релокализация потом может не сработать.
     func captureWorldMap() async throws -> ARWorldMap {
         try await withCheckedThrowingContinuation { continuation in
@@ -217,7 +217,7 @@ final class ARSessionController: NSObject, ObservableObject {
         }
     }
 
-    /// Снимок экрана AR вместе с нарисованными трассами — превью комнаты
+    /// Снимок экрана AR вместе с нарисованными трассами - превью комнаты
     func snapshot() async -> UIImage? {
         await withCheckedContinuation { continuation in
             arView.snapshot(saveToHDR: false) { image in

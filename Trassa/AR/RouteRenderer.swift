@@ -17,7 +17,7 @@ struct RenderRoute: Equatable {
 
 /// Строит RealityKit-сущности для линий трасс и красной зоны ±15 см.
 ///
-/// Все примитивы — единичные меши (куб 1×1×1, сфера Ø1), которые растягиваются
+/// Все примитивы - единичные меши (куб 1×1×1, сфера Ø1), которые растягиваются
 /// через scale. Так не нужно генерировать новую геометрию на каждый кадр.
 @MainActor
 enum RouteRenderer {
@@ -26,7 +26,7 @@ enum RouteRenderer {
     static let lineDepth: Float = 0.003
     static let pointRadius: Float = 0.014
     static let zoneDepth: Float = 0.001
-    /// Линия приподнята над стеной на 3 мм, зона — на 1 мм, чтобы не «мерцали» со стеной
+    /// Линия приподнята над стеной на 3 мм, зона - на 1 мм, чтобы не «мерцали» со стеной
     static let lineOffset: Float = 0.003
     static let zoneOffset: Float = 0.001
 
@@ -74,7 +74,7 @@ enum RouteRenderer {
                 dot.transform = Transform(scale: SIMD3(repeating: pointRadius * 2), rotation: simd_quatf(), translation: p.position + p.normal * lineOffset)
                 root.addChild(dot)
             }
-            // Скругление зоны на концах и изломах — плоский «диск» радиусом 15 см
+            // Скругление зоны на концах и изломах - плоский «диск» радиусом 15 см
             if showZone {
                 let cap = ModelEntity(mesh: unitSphere, materials: [zoneMaterial])
                 cap.transform = discTransform(at: p.position, normal: p.normal, radius: zoneRadius, depth: zoneDepth, offset: zoneOffset)
@@ -87,9 +87,9 @@ enum RouteRenderer {
     /// Трансформ, превращающий единичный куб в «полоску» от A до B, лежащую на стене.
     ///
     /// Строим ортонормированный базис:
-    ///  y — вдоль отрезка (длина),
-    ///  z — нормаль стены, ортогонализованная к y (толщина),
-    ///  x = y × z — поперёк отрезка по стене (ширина).
+    ///  y - вдоль отрезка (длина),
+    ///  z - нормаль стены, ортогонализованная к y (толщина),
+    ///  x = y × z - поперёк отрезка по стене (ширина).
     /// Тройка (x, y, z) правая, поэтому из неё получается корректный кватернион поворота.
     static func segmentTransform(_ a: SIMD3<Float>, _ b: SIMD3<Float>, normal: SIMD3<Float>,
                                  width: Float, depth: Float, offset: Float) -> Transform? {
@@ -97,7 +97,7 @@ enum RouteRenderer {
         let length = simd_length(d)
         guard length > 1e-4 else { return nil }
         let y = d / length
-        // Убираем из нормали составляющую вдоль отрезка (Грам — Шмидт)
+        // Убираем из нормали составляющую вдоль отрезка (Грам - Шмидт)
         var z = normal - simd_dot(normal, y) * y
         if simd_length(z) < 1e-3 {
             z = abs(y.y) < 0.9 ? simd_cross(y, SIMD3(0, 1, 0)) : simd_cross(y, SIMD3(1, 0, 0))

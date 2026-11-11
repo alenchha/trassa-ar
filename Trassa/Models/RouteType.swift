@@ -20,7 +20,7 @@ enum RouteType: String, CaseIterable, Codable, Identifiable {
         }
     }
 
-    /// Что именно в стене — для фразы «8 см до кабеля»
+    /// Что именно в стене - для фразы «8 см до кабеля»
     var objectNoun: String {
         switch self {
         case .electric: "кабеля"
@@ -30,7 +30,7 @@ enum RouteType: String, CaseIterable, Codable, Identifiable {
         }
     }
 
-    /// Название в нижнем регистре: «Трасса в 8 см — электрика»
+    /// Название в нижнем регистре: «Трасса в 8 см - электрика»
     var lowercasedTitle: String { title.lowercased() }
 
     var color: Color {

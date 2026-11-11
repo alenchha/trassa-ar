@@ -8,19 +8,19 @@ enum Theme {
     // MARK: - Цвета
 
     enum Colors {
-        /// Фон экранов — #101214
+        /// Фон экранов - #101214
         static let background = Color(hex: 0x101214)
-        /// Карточки, поля ввода, вторичные кнопки — #1C1F23
+        /// Карточки, поля ввода, вторичные кнопки - #1C1F23
         static let surface = Color(hex: 0x1C1F23)
-        /// Обводка карточек и неактивные элементы — #34393F
+        /// Обводка карточек и неактивные элементы - #34393F
         static let border = Color(hex: 0x34393F)
-        /// Основной текст — #F6F7F9
+        /// Основной текст - #F6F7F9
         static let textPrimary = Color(hex: 0xF6F7F9)
-        /// Вторичный текст — #AAB2BC
+        /// Вторичный текст - #AAB2BC
         static let textSecondary = Color(hex: 0xAAB2BC)
-        /// Неактивный текст, точки пейджера — #5B6169
+        /// Неактивный текст, точки пейджера - #5B6169
         static let textMuted = Color(hex: 0x5B6169)
-        /// Фирменный оранжевый — #FF6B00
+        /// Фирменный оранжевый - #FF6B00
         static let accent = Color(hex: 0xFF6B00)
         /// Текст на оранжевой кнопке
         static let onAccent = Color(hex: 0x101214)
@@ -29,9 +29,9 @@ enum Theme {
         /// Затемнение камеры (#101214, 16 %)
         static let cameraDim = Color(hex: 0x101214).opacity(0.16)
 
-        /// «Безопасно» — #52DBA0
+        /// «Безопасно» - #52DBA0
         static let safe = Color(hex: 0x52DBA0)
-        /// «Опасно» — #FF5D60
+        /// «Опасно» - #FF5D60
         static let danger = Color(hex: 0xFF5D60)
         /// Красная зона ±15 см (#FF5D60, 24 %)
         static let dangerZone = Color(hex: 0xFF5D60).opacity(0.24)
@@ -110,29 +110,29 @@ enum Theme {
             return .system(size: size, weight: weight)
         }
 
-        /// 30/700 — крупный заголовок («Стены помнят.»)
+        /// 30/700 - крупный заголовок («Стены помнят.»)
         static let hero = inter(30, .bold)
-        /// 32/700 — заголовок экрана («Комнаты»)
+        /// 32/700 - заголовок экрана («Комнаты»)
         static let largeTitle = inter(32, .bold)
-        /// 27/700 — заголовок карточки трассы
+        /// 27/700 - заголовок карточки трассы
         static let title = inter(27, .bold)
-        /// 22/700 — заголовок нижней панели AR
+        /// 22/700 - заголовок нижней панели AR
         static let title2 = inter(22, .bold)
-        /// 21/700 — заголовок плашки результата
+        /// 21/700 - заголовок плашки результата
         static let title3 = inter(21, .bold)
-        /// 18/600 — навбар и названия карточек
+        /// 18/600 - навбар и названия карточек
         static let headline = inter(18, .semibold)
-        /// 16/600 — текст кнопок
+        /// 16/600 - текст кнопок
         static let button = inter(16, .semibold)
-        /// 15/500 — подсказки
+        /// 15/500 - подсказки
         static let callout = inter(15, .medium)
-        /// 15/400 — основной текст
+        /// 15/400 - основной текст
         static let body = inter(15)
-        /// 14/600 — подписи и чипы
+        /// 14/600 - подписи и чипы
         static let subheadline = inter(14, .semibold)
-        /// 14/400 — описания
+        /// 14/400 - описания
         static let subheadlineRegular = inter(14)
-        /// 13/600 — мелкие подписи
+        /// 13/600 - мелкие подписи
         static let footnote = inter(13, .semibold)
         /// 13/400
         static let footnoteRegular = inter(13)
@@ -140,9 +140,9 @@ enum Theme {
         static let caption = inter(12)
         /// 12/600
         static let captionBold = inter(12, .semibold)
-        /// 11/700 — капслок-метки («ЗАПИСЬ»)
+        /// 11/700 - капслок-метки («ЗАПИСЬ»)
         static let label = inter(11, .bold)
-        /// 10/700 — капслок-подписи в таблицах
+        /// 10/700 - капслок-подписи в таблицах
         static let microLabel = inter(10, .bold)
     }
 }

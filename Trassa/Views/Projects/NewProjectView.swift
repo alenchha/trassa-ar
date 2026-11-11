@@ -29,7 +29,7 @@ struct NewProjectView: View {
                     LabeledField(label: "Адрес · необязательно", placeholder: "Ленинградский пр-т, 18", text: $address)
                         .padding(.top, 24)
 
-                    InfoCard(icon: "cube", title: "Сначала — первая комната",
+                    InfoCard(icon: "cube", title: "Сначала - первая комната",
                              text: "Наведите камеру на открытую стену\nи отметьте трубы и кабели.")
                         .padding(.top, 48)
                 }

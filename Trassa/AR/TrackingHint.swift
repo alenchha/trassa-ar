@@ -2,7 +2,7 @@ import ARKit
 
 /// Понятная пользователю интерпретация состояния ARKit.
 struct TrackingHint: Equatable {
-    /// Уровень качества 0…4 — число зелёных столбиков индикатора
+    /// Уровень качества 0…4 - число зелёных столбиков индикатора
     let level: Int
     /// «Качество: хорошее»
     let qualityText: String
@@ -49,7 +49,7 @@ struct TrackingHint: Equatable {
             }
             let message = hasSurface
                 ? "Медленно ведите телефоном\nпо стене"
-                : "Наведите прицел на стену.\nСтена должна быть в 0,3–3 м"
+                : "Наведите прицел на стену.\nСтена должна быть в 0,3-3 м"
             return TrackingHint(level: level, qualityText: quality, message: message, canPlacePoints: hasSurface)
         }
     }
@@ -60,7 +60,7 @@ extension ARFrame.WorldMappingStatus {
     var saveExplanation: String {
         switch self {
         case .mapped:
-            "Карта готова — можно сохранять."
+            "Карта готова - можно сохранять."
         case .extending:
             "Почти готово. Поводите телефоном ещё немного: захватите угол стены или проём."
         case .limited:

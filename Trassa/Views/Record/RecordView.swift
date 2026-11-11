@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Экраны 07, 08, 17–22, 26 · AR-запись трасс
+/// Экраны 07, 08, 17-22, 26 · AR-запись трасс
 struct RecordView: View {
     @StateObject private var model: RecordViewModel
     @Environment(\.dismiss) private var dismiss
@@ -16,7 +16,7 @@ struct RecordView: View {
                 .ignoresSafeArea()
             Theme.Colors.cameraDim.ignoresSafeArea().allowsHitTesting(false)
 
-            // Прицел строго в центре ARView — туда же направлен raycast
+            // Прицел строго в центре ARView - туда же направлен raycast
             Reticle()
                 .overlay(alignment: .topLeading) {
                     if let label = model.currentLineLabel {
@@ -82,7 +82,7 @@ struct RecordView: View {
         if model.drafts.isEmpty && model.current.points.isEmpty { dismiss() } else { confirmClose = true }
     }
 
-    /// «Сохранить» — визуально неактивна, пока карта не .mapped, но по нажатию объясняет почему
+    /// «Сохранить» - визуально неактивна, пока карта не .mapped, но по нажатию объясняет почему
     private var saveButton: some View {
         Button(action: model.requestSave) {
             VStack(spacing: 2) {
@@ -113,7 +113,7 @@ struct RecordView: View {
             .frame(height: 48)
             .background(Theme.Colors.background, in: RoundedRectangle(cornerRadius: Theme.Metrics.radius))
 
-            Text(model.needsRelocalization ? "Наведите на ту же стену, что при записи — старые трассы появятся на месте" : model.hint.message)
+            Text(model.needsRelocalization ? "Наведите на ту же стену, что при записи - старые трассы появятся на месте" : model.hint.message)
                 .font(Theme.Fonts.callout)
                 .foregroundStyle(Theme.Colors.textPrimary)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -131,7 +131,7 @@ struct RecordView: View {
         case .limited: "мало данных"
         case .extending: "почти"
         case .mapped: "готова"
-        @unknown default: "—"
+        @unknown default: "-"
         }
     }
 

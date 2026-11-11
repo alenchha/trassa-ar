@@ -174,7 +174,7 @@ struct TagLabel: View {
     }
 }
 
-/// Плашка поверх камеры (#101214, радиус 8–12)
+/// Плашка поверх камеры (#101214, радиус 8-12)
 struct OverlayPill<Content: View>: View {
     var radius: CGFloat = Theme.Metrics.smallRadius
     @ViewBuilder var content: () -> Content
@@ -187,7 +187,7 @@ struct OverlayPill<Content: View>: View {
     }
 }
 
-/// Чип выбора типа трассы: цветная точка + название, выбранный — с обводкой цвета трассы
+/// Чип выбора типа трассы: цветная точка + название, выбранный - с обводкой цвета трассы
 struct RouteTypeChip: View {
     let type: RouteType
     let isSelected: Bool
@@ -226,7 +226,7 @@ struct QualityBars: View {
     }
 }
 
-/// Плашка результата «Безопасно» / «Трасса в 8 см — электрика»
+/// Плашка результата «Безопасно» / «Трасса в 8 см - электрика»
 struct DrillResultCard: View {
     let isDangerous: Bool
     let title: String

@@ -50,7 +50,7 @@ final class GeometryTests: XCTestCase {
         // Г-образная трасса: вверх на 1 м, вправо на 0,5 м
         let pts: [SIMD3<Float>] = [a, b, SIMD3(0.5, 1, 0)]
         XCTAssertEqual(Geometry.polylineLength(pts), 1.5, accuracy: eps)
-        // Точка под горизонтальным участком: ближайший — второй отрезок
+        // Точка под горизонтальным участком: ближайший - второй отрезок
         let hit = Geometry.distancePointToPolyline(SIMD3(0.3, 0.92, 0), pts)
         XCTAssertNotNil(hit)
         XCTAssertEqual(hit!.distance, 0.08, accuracy: eps)
@@ -69,7 +69,7 @@ final class GeometryTests: XCTestCase {
 
     func testDrillCheckSafeAt15cmAndMore() {
         let routes = [DrillCheck.Polyline(type: .heating, points: [a, b])]
-        // Ровно 15 см — уже за границей зоны (условие «< 15 см»)
+        // Ровно 15 см - уже за границей зоны (условие «< 15 см»)
         XCTAssertFalse(DrillCheck.evaluate(point: SIMD3(0.15, 0.5, 0), routes: routes).isDangerous)
         let far = DrillCheck.evaluate(point: SIMD3(0.34, 0.5, 0), routes: routes)
         XCTAssertFalse(far.isDangerous)

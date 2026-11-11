@@ -17,10 +17,10 @@ enum Schematic {
 
     /// Проецирует 3D-точки трасс на плоскость стены и вписывает их в `rect`.
     ///
-    /// Базис плоскости: «вверх» — мировая ось Y (ARKit выравнивает её по гравитации),
-    /// нормаль — средняя нормаль точек без вертикальной составляющей,
+    /// Базис плоскости: «вверх» - мировая ось Y (ARKit выравнивает её по гравитации),
+    /// нормаль - средняя нормаль точек без вертикальной составляющей,
     /// «вправо» = up × normal. Координаты точки на схеме: (p·right, p·up).
-    /// Для нескольких стен это «развёртка» на одну плоскость — для MVP достаточно.
+    /// Для нескольких стен это «развёртка» на одну плоскость - для MVP достаточно.
     static func layout(routes: [(RouteType, [SIMD3<Float>])], normals: [SIMD3<Float>], in rect: CGRect) -> Layout {
         let up = SIMD3<Float>(0, 1, 0)
         var n = normals.reduce(SIMD3<Float>.zero, +)
@@ -49,7 +49,7 @@ enum Schematic {
         let lines = projected.map { type, pts in
             Line(type: type, points: pts.map {
                 CGPoint(x: offsetX + CGFloat($0.x - minP.x) * scale,
-                        // Ось Y экрана направлена вниз — переворачиваем
+                        // Ось Y экрана направлена вниз - переворачиваем
                         y: offsetY + CGFloat(maxP.y - $0.y) * scale)
             })
         }

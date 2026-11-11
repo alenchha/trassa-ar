@@ -33,7 +33,7 @@ struct WorldMapStore {
 
     // MARK: - Сырые данные (используются и в тестах)
 
-    /// Атомарная запись: сначала во временный файл, затем замена —
+    /// Атомарная запись: сначала во временный файл, затем замена -
     /// чтобы при сбое не потерять предыдущую версию карты.
     @discardableResult
     func save(data: Data, roomID: UUID) throws -> String {
@@ -56,7 +56,7 @@ struct WorldMapStore {
     // MARK: - ARWorldMap
 
     /// Сериализация карты. ARWorldMap поддерживает NSSecureCoding,
-    /// поэтому её можно заархивировать NSKeyedArchiver целиком — вместе со всеми
+    /// поэтому её можно заархивировать NSKeyedArchiver целиком - вместе со всеми
     /// ARAnchor точек трасс, которые мы добавили в сессию.
     static func archive(_ map: ARWorldMap) throws -> Data {
         try NSKeyedArchiver.archivedData(withRootObject: map, requiringSecureCoding: true)

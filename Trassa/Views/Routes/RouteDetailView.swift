@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 import PhotosUI
 
-/// Экраны 15, 23–25 · Карточка трассы
+/// Экраны 15, 23-25 · Карточка трассы
 struct RouteDetailView: View {
     @Bindable var route: Route
     @Environment(\.modelContext) private var context

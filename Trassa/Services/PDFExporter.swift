@@ -1,7 +1,7 @@
 import UIKit
 
 /// Экспорт схемы комнаты в PDF для мебельщиков:
-/// стр. 1 — превью, схема с зонами ±15 см, сводка; стр. 2+ — таблица трасс, фото штроб, заметки.
+/// стр. 1 - превью, схема с зонами ±15 см, сводка; стр. 2+ - таблица трасс, фото штроб, заметки.
 enum PDFExporter {
     // A4 в пунктах
     static let page = CGRect(x: 0, y: 0, width: 595, height: 842)
@@ -53,7 +53,7 @@ enum PDFExporter {
         Schematic.draw(Schematic.layout(for: room, in: schemeRect.insetBy(dx: 12, dy: 12)), in: cg, rect: schemeRect, forPrint: true)
         y = schemeRect.maxY + 14
 
-        y += text("±15 см от трассы — не сверлить", font(12, .semibold), UIColor(hex: 0xBA3333),
+        y += text("±15 см от трассы - не сверлить", font(12, .semibold), UIColor(hex: 0xBA3333),
                   at: CGPoint(x: margin, y: y), width: width) + 8
         let summary = "\(Formatters.routes(room.routes.count)) · \(Formatters.meters(room.totalLength)) · \(Formatters.numeric.string(from: room.updatedAt))"
         y += text(summary, font(12), gray, at: CGPoint(x: margin, y: y), width: width) + 18
@@ -114,10 +114,10 @@ enum PDFExporter {
 
         row(cols.map(\.0), bold: true, height: 24)
         for (i, route) in room.sortedRoutes.enumerated() {
-            let desc = [route.title, route.note].filter { !$0.isEmpty }.joined(separator: " — ")
-            let h = max(24, measure(desc.isEmpty ? "—" : desc, font(10), width: cols[2].1 - 6) + 12)
+            let desc = [route.title, route.note].filter { !$0.isEmpty }.joined(separator: " - ")
+            let h = max(24, measure(desc.isEmpty ? "-" : desc, font(10), width: cols[2].1 - 6) + 12)
             newPageIfNeeded(h)
-            row(["\(i + 1)", route.type.title, desc.isEmpty ? "—" : desc, Formatters.meters(route.length),
+            row(["\(i + 1)", route.type.title, desc.isEmpty ? "-" : desc, Formatters.meters(route.length),
                  "\(route.points.count)", Formatters.numeric.string(from: route.createdAt)],
                 bold: false, color: route.type.printColor, height: h)
         }

@@ -53,7 +53,7 @@ struct RoomRepository {
 
     /// Сохраняет результат AR-записи: файл карты + трассы + превью.
     ///
-    /// Порядок важен: сначала пишем файл карты (если запись упадёт — база
+    /// Порядок важен: сначала пишем файл карты (если запись упадёт - база
     /// не изменится), затем создаём/обновляем комнату и трассы в SwiftData.
     @discardableResult
     func saveRecording(
@@ -76,7 +76,7 @@ struct RoomRepository {
         room.worldMapFileName = fileName
         if let previewData { room.previewImageData = previewData }
 
-        // Трассы из одной точки не сохраняем — это не линия
+        // Трассы из одной точки не сохраняем - это не линия
         for draft in drafts where draft.points.count >= 2 {
             let route = Route(type: draft.type)
             context.insert(route)

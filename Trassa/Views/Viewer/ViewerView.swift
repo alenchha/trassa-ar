@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Экраны 10–13 · Поиск стены, просмотр трасс, проверка сверления
+/// Экраны 10-13 · Поиск стены, просмотр трасс, проверка сверления
 struct ViewerView: View {
     @StateObject private var model: ViewerViewModel
     @Environment(\.dismiss) private var dismiss
@@ -205,7 +205,7 @@ struct ViewerView: View {
         Group {
             if let drill, let distance = drill.distance, let type = drill.nearestType, drill.isDangerous {
                 DrillResultCard(isDangerous: true,
-                                title: "Трасса в \(Formatters.centimeters(distance)) — \(type.lowercasedTitle)",
+                                title: "Трасса в \(Formatters.centimeters(distance)) - \(type.lowercasedTitle)",
                                 subtitle: "Не сверлите в этой зоне")
             } else if drill != nil {
                 DrillResultCard(isDangerous: false, title: "Безопасно",
@@ -218,7 +218,7 @@ struct ViewerView: View {
         .animation(.easeInOut(duration: 0.15), value: dangerous)
 
         Text(checkTip
-             ? "Медленно сдвигайте прицел — результат обновляется сразу."
+             ? "Медленно сдвигайте прицел - результат обновляется сразу."
              : "Оценка по сохранённой карте.\nПеред сверлением проверьте детектором.")
             .font(Theme.Fonts.footnoteRegular)
             .foregroundStyle(Theme.Colors.textSecondary)

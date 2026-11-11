@@ -14,7 +14,7 @@ enum AppRoute: Hashable {
 struct RecordRequest: Identifiable {
     let id = UUID()
     let project: Project
-    /// nil — новая комната; иначе дописываем трассы в существующую
+    /// nil - новая комната; иначе дописываем трассы в существующую
     let room: Room?
 }
 

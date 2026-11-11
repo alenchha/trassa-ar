@@ -2,7 +2,7 @@ import UIKit
 
 /// Тактильная отдача
 enum Haptics {
-    /// Лёгкая вибрация — прицел попал в опасную зону
+    /// Лёгкая вибрация - прицел попал в опасную зону
     static func danger() {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.prepare()

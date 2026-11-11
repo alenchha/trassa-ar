@@ -39,7 +39,7 @@ final class PersistenceTests: XCTestCase {
             drafts: [
                 draft(.electric, [SIMD3(0, 0, 0), SIMD3(0, 1, 0), SIMD3(0.5, 1, 0)]),
                 draft(.water, [SIMD3(1, 0, 0), SIMD3(1, 0.4, 0)]),
-                draft(.heating, [SIMD3(2, 0, 0)]), // одна точка — не сохраняется
+                draft(.heating, [SIMD3(2, 0, 0)]), // одна точка - не сохраняется
             ],
             worldMapData: mapData, previewData: nil
         )

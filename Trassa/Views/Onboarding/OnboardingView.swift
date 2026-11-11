@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Экраны 01–03: «Отметьте трассы», «Сохраните комнату», «Сверлите без риска»
+/// Экраны 01-03: «Отметьте трассы», «Сохраните комнату», «Сверлите без риска»
 struct OnboardingView: View {
     let onFinish: () -> Void
     @State private var page = 0
@@ -14,9 +14,9 @@ struct OnboardingView: View {
 
     private let pages = [
         Page(tag: "До отделки", title: "Отметьте трассы\nдо отделки",
-             text: "Соединяйте точки на открытой стене.\nКаждая труба и кабель — на своём месте.", photo: "wall_rough"),
+             text: "Соединяйте точки на открытой стене.\nКаждая труба и кабель - на своём месте.", photo: "wall_rough"),
         Page(tag: "Карта комнаты", title: "Сохраните\nкомнату",
-             text: "Трассы, фото и заметки останутся\nв одной карте — не в галерее телефона.", photo: "wall_rough"),
+             text: "Трассы, фото и заметки останутся\nв одной карте - не в галерее телефона.", photo: "wall_rough"),
         Page(tag: "После ремонта", title: "Сверлите\nбез риска",
              text: "Наведите камеру на готовую стену\nи проверьте место перед сверлением.", photo: "wall_finished"),
     ]
@@ -40,7 +40,7 @@ struct OnboardingView: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
 
-            // Индикатор страниц: активная — 22×6 оранжевая, остальные — 8×6
+            // Индикатор страниц: активная - 22×6 оранжевая, остальные - 8×6
             HStack(spacing: 22) {
                 ForEach(pages.indices, id: \.self) { i in
                     Capsule()
@@ -88,7 +88,7 @@ struct OnboardingView: View {
 struct OnboardingIllustration: View {
     let photo: String
     let tag: String
-    /// 0 — линии, 1 — карточка «сохранено», 2 — линии с красной зоной
+    /// 0 - линии, 1 - карточка «сохранено», 2 - линии с красной зоной
     let variant: Int
 
     var body: some View {

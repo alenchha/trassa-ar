@@ -3,10 +3,10 @@ import SwiftData
 import simd
 
 // Схема данных:
-// Project (объект) 1—N Room (комната) 1—N Route (трасса) 1—N RoutePoint (точка)
-//                                     1—N RoomNote (заметка)
+// Project (объект) 1-N Room (комната) 1-N Route (трасса) 1-N RoutePoint (точка)
+//                                     1-N RoomNote (заметка)
 // Сама карта ARWorldMap хранится отдельным файлом (см. WorldMapStore),
-// в базе — только имя файла.
+// в базе - только имя файла.
 
 /// Объект: квартира или дом
 @Model
@@ -31,7 +31,7 @@ final class Project {
     var sortedRooms: [Room] { rooms.sorted { $0.createdAt < $1.createdAt } }
     var routesCount: Int { rooms.reduce(0) { $0 + $1.routes.count } }
 
-    /// Превью объекта — снимок последней обновлённой комнаты
+    /// Превью объекта - снимок последней обновлённой комнаты
     var coverImageData: Data? {
         rooms.sorted { $0.updatedAt > $1.updatedAt }.first { $0.previewImageData != nil }?.previewImageData
     }
@@ -77,7 +77,7 @@ final class Room {
     }
 }
 
-/// Одна трасса — ломаная из точек одного типа
+/// Одна трасса - ломаная из точек одного типа
 @Model
 final class Route {
     @Attribute(.unique) var id: UUID
@@ -128,7 +128,7 @@ final class RoutePoint {
     var x: Float
     var y: Float
     var z: Float
-    // Нормаль стены в этой точке — нужна, чтобы «положить» линию и зону на стену
+    // Нормаль стены в этой точке - нужна, чтобы «положить» линию и зону на стену
     var nx: Float
     var ny: Float
     var nz: Float

@@ -20,7 +20,7 @@ struct ProjectsListView: View {
                     .frame(height: 56)
                     .padding(.top, 4)
 
-                Text("Стены помнят.\nВы — спокойны.")
+                Text("Стены помнят.\nВы - спокойны.")
                     .font(Theme.Fonts.hero)
                     .foregroundStyle(Theme.Colors.textPrimary)
                     .padding(.top, 20)
@@ -48,7 +48,7 @@ struct ProjectsListView: View {
                     }
                     if projects.isEmpty {
                         InfoCard(icon: "cube", title: "Пока пусто",
-                                 text: "Объект — это квартира или дом. Внутри — комнаты с картами трасс.")
+                                 text: "Объект - это квартира или дом. Внутри - комнаты с картами трасс.")
                     }
                 }
                 .padding(.top, 21)

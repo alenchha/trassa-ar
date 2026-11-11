@@ -1,20 +1,20 @@
 import Foundation
 import simd
 
-/// Чистая геометрия без зависимостей от ARKit — легко тестируется.
+/// Чистая геометрия без зависимостей от ARKit - легко тестируется.
 enum Geometry {
 
     /// Ближайшая к `p` точка на отрезке AB.
     ///
     /// Математика: параметризуем отрезок как A + t·(B − A), t ∈ [0, 1].
     /// Проекция P на прямую AB даёт t = ((P − A)·(B − A)) / |B − A|².
-    /// Если t < 0, ближайшая точка — A, если t > 1 — B, иначе внутренняя точка.
+    /// Если t < 0, ближайшая точка - A, если t > 1 - B, иначе внутренняя точка.
     /// Ограничение t отрезком [0, 1] (clamp) и превращает «расстояние до прямой»
     /// в «расстояние до отрезка».
     static func closestPointOnSegment(_ p: SIMD3<Float>, _ a: SIMD3<Float>, _ b: SIMD3<Float>) -> SIMD3<Float> {
         let ab = b - a
         let lengthSquared = simd_length_squared(ab)
-        // Вырожденный отрезок (A == B) — это просто точка
+        // Вырожденный отрезок (A == B) - это просто точка
         guard lengthSquared > .ulpOfOne else { return a }
         let t = simd_clamp(simd_dot(p - a, ab) / lengthSquared, 0, 1)
         return a + t * ab
@@ -25,7 +25,7 @@ enum Geometry {
         simd_distance(p, closestPointOnSegment(p, a, b))
     }
 
-    /// Расстояние от точки до ломаной. Для одной точки — расстояние до неё.
+    /// Расстояние от точки до ломаной. Для одной точки - расстояние до неё.
     static func distancePointToPolyline(_ p: SIMD3<Float>, _ points: [SIMD3<Float>]) -> (distance: Float, closest: SIMD3<Float>)? {
         guard let first = points.first else { return nil }
         guard points.count > 1 else { return (simd_distance(p, first), first) }
@@ -49,10 +49,10 @@ enum Geometry {
 
 /// Результат проверки «Можно ли тут сверлить?»
 struct DrillCheckResult: Equatable {
-    /// Расстояние до ближайшей трассы (м), nil — трасс нет
+    /// Расстояние до ближайшей трассы (м), nil - трасс нет
     let distance: Float?
     let nearestType: RouteType?
-    /// Ближайшая точка на трассе — для рисования «линейки» в AR
+    /// Ближайшая точка на трассе - для рисования «линейки» в AR
     let nearestPoint: SIMD3<Float>?
     let isDangerous: Bool
 }
